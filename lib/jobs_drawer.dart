@@ -4,12 +4,12 @@ import 'package:video_player/video_player.dart';
 
 import 'job_det.dart';
 
-class JobsPage extends StatefulWidget {
+class JobsDrawPage extends StatefulWidget {
   @override
-  _JobsPageState createState() => _JobsPageState();
+  _JobsDrawPageState createState() => _JobsDrawPageState();
 }
 
-class _JobsPageState extends State<JobsPage> {
+class _JobsDrawPageState extends State<JobsDrawPage> {
   VideoPlayerController _controller;
   Future<void> _initializeVideoPlayerFuture;
   int no;
@@ -25,6 +25,23 @@ class _JobsPageState extends State<JobsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: sub_white,
+        appBar: AppBar(
+          //automaticallyImplyLeading: false,
+          backgroundColor: header,
+          title: Center(
+            child: Container(
+              child: Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text("My Jobs",
+                        style: TextStyle(fontSize: 18, color: Colors.white)),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
         body: ListView.builder(
           itemBuilder: (BuildContext context, int index) => new Padding(
             padding: const EdgeInsets.all(0.0),

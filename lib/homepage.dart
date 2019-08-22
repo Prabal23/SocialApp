@@ -8,6 +8,7 @@ import 'package:social_app/post_status_pic.dart';
 import 'package:social_app/profile.dart';
 import 'package:social_app/jobs.dart';
 import 'group.dart';
+import 'jobs_drawer.dart';
 import 'main.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -278,54 +279,62 @@ class _MyHomePageState extends State<MyHomePage> {
                   ],
                 ),
               ),
-              Container(
-                margin: EdgeInsets.only(left: 15, right: 15, top: 25),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        Icon(
-                          Icons.work,
-                          color: Colors.black45,
-                          size: 23,
-                        ),
-                        Container(
-                            margin: EdgeInsets.only(left: 10),
-                            child:
-                                Text("My Jobs", style: TextStyle(fontSize: 14)))
-                      ],
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Container(
-                          margin: EdgeInsets.only(
-                            left: 0,
-                            right: 5,
+              GestureDetector(
+                onTap: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => JobsDrawPage()),
+                  );
+                },
+                child: Container(
+                  margin: EdgeInsets.only(left: 15, right: 15, top: 25),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          Icon(
+                            Icons.work,
+                            color: Colors.black45,
+                            size: 23,
                           ),
-                          //transform: Matrix4.translationValues(0.0, 0.0, 0.0),
-                          padding: EdgeInsets.all(1.0),
-                          child: CircleAvatar(
-                            radius: 2.0,
-                            backgroundColor: header,
-                            //backgroundImage: AssetImage('assets/user.png'),
+                          Container(
+                              margin: EdgeInsets.only(left: 10),
+                              child:
+                                  Text("My Jobs", style: TextStyle(fontSize: 14)))
+                        ],
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Container(
+                            margin: EdgeInsets.only(
+                              left: 0,
+                              right: 5,
+                            ),
+                            //transform: Matrix4.translationValues(0.0, 0.0, 0.0),
+                            padding: EdgeInsets.all(1.0),
+                            child: CircleAvatar(
+                              radius: 2.0,
+                              backgroundColor: header,
+                              //backgroundImage: AssetImage('assets/user.png'),
+                            ),
+                            decoration: new BoxDecoration(
+                              color: header, // border color
+                              shape: BoxShape.circle,
+                            ),
                           ),
-                          decoration: new BoxDecoration(
-                            color: header, // border color
-                            shape: BoxShape.circle,
+                          Container(
+                            margin: EdgeInsets.only(right: 5),
+                            child: Text("6 new jobs",
+                                style: TextStyle(
+                                    fontSize: 12,
+                                    color: header,
+                                    fontWeight: FontWeight.bold)),
                           ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(right: 5),
-                          child: Text("6 new jobs",
-                              style: TextStyle(
-                                  fontSize: 12,
-                                  color: header,
-                                  fontWeight: FontWeight.bold)),
-                        ),
-                      ],
-                    )
-                  ],
+                        ],
+                      )
+                    ],
+                  ),
                 ),
               ),
               Container(

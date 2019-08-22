@@ -23,7 +23,7 @@ class _JobDetPageState extends State<JobDetPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Text("Job Name",
-                        style: TextStyle(fontSize: 20, color: Colors.white)),
+                        style: TextStyle(fontSize: 18, color: Colors.white)),
                   ],
                 ),
               ),

@@ -23,7 +23,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Text("Profile",
-                        style: TextStyle(fontSize: 20, color: Colors.white)),
+                        style: TextStyle(fontSize: 18, color: Colors.white)),
                   ],
                 ),
               ),

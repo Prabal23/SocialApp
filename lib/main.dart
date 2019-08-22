@@ -12,6 +12,7 @@ Color golden = Color(0xFFCFB53B);
 Color chat_back = Color(0xFFEAE7E2);
 Color my_chat = Color(0xFF01AFF4);
 Color person_chat = Color(0xFFF1F0F0);
+String job_page = "1";
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.

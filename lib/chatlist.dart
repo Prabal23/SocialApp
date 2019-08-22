@@ -29,7 +29,7 @@ class _ChatListPageState extends State<ChatListPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text("Chat List",
-                      style: TextStyle(fontSize: 20, color: Colors.white)),
+                      style: TextStyle(fontSize: 18, color: Colors.white)),
                 ],
               ),
             ),

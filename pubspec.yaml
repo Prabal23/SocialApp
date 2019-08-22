@@ -25,6 +25,7 @@ dependencies:
   cupertino_icons: ^0.1.2
   flutter_statusbarcolor:
   video_player:
+  toast:
 
 dev_dependencies:
   flutter_test:
@@ -51,6 +52,8 @@ flutter:
     - assets/cover.jpg
     - assets/youtube.png
     - assets/job1.png
+    - assets/camera.jpg
+    - assets/cam.png
     #- images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
