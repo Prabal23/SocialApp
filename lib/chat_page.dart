@@ -16,6 +16,7 @@ class _ChatPageState extends State<ChatPage> {
   TextEditingController msgController = new TextEditingController();
   //ScrollController _scrollController = new ScrollController();
   List<String> messages = [];
+  int selected;
 
   @override
   void initState() {
@@ -75,7 +76,7 @@ class _ChatPageState extends State<ChatPage> {
       body: SafeArea(
         child: new Container(
             padding: EdgeInsets.all(0.0),
-            color: Colors.white,
+            color: chat_page_back,
             //color: chat_back,
             child: Column(
               children: <Widget>[
@@ -86,195 +87,234 @@ class _ChatPageState extends State<ChatPage> {
                         itemCount: messages.length,
                         //reverse: true,
                         itemBuilder: (BuildContext context, int index) =>
-                            index % 2 == 0
-                                ? Container(
-                                    child: ListTile(
-                                      title: Container(
-                                        margin: EdgeInsets.only(
-                                            left: 0, right: 0, top: 5),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          children: <Widget>[
-                                            Expanded(
-                                              child: Container(
-                                                //margin: EdgeInsets.only(top: 5),
-                                                child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.end,
-                                                  children: <Widget>[
-                                                    Container(
-                                                      padding:
-                                                          EdgeInsets.all(10),
-                                                      margin: EdgeInsets.only(
-                                                          top: 4, left: 70),
-                                                      decoration:
-                                                          new BoxDecoration(
-                                                        //color: header,
-                                                        color: my_chat,
-                                                        borderRadius:
-                                                            BorderRadius.all(
-                                                                Radius.circular(
-                                                                    10)),
-                                                        border: Border.all(
-                                                            width: 0.2,
-                                                            color: Colors.grey),
-                                                      ),
-                                                      //color: Colors.white,
-                                                      child: Text(
-                                                        "${messages[index]}",
-                                                        style: TextStyle(
-                                                            fontSize: 14,
-                                                            color:
-                                                                Colors.white),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      margin: EdgeInsets.only(
-                                                          top: 5),
-                                                      child: Row(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .end,
-                                                        children: <Widget>[
-                                                          Text(
-                                                            "24/07/19",
-                                                            style: TextStyle(
-                                                                fontSize: 10,
-                                                                color: Colors
-                                                                    .grey),
+                            GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    selected = index;
+                                  });
+                                },
+                                child: index % 2 == 0
+                                    ? Container(
+                                        child: ListTile(
+                                          title: Container(
+                                            margin: EdgeInsets.only(
+                                                left: 0, right: 0, top: 0),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              children: <Widget>[
+                                                Expanded(
+                                                  child: Container(
+                                                    //margin: EdgeInsets.only(top: 5),
+                                                    child: Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .end,
+                                                      children: <Widget>[
+                                                        Container(
+                                                          padding:
+                                                              EdgeInsets.all(
+                                                                  10),
+                                                          margin:
+                                                              EdgeInsets.only(
+                                                                  top: 0,
+                                                                  left: 70),
+                                                          decoration:
+                                                              new BoxDecoration(
+                                                            //color: header,
+                                                            color: my_chat,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .all(Radius
+                                                                        .circular(
+                                                                            10)),
+                                                            border: Border.all(
+                                                                width: 0.1,
+                                                                color: my_chat),
                                                           ),
-                                                          Container(
-                                                            margin:
-                                                                EdgeInsets.only(
-                                                                    left: 3),
-                                                            child: messages
-                                                                        .length ==
-                                                                    index + 1
-                                                                ? Container(
-                                                                  decoration: BoxDecoration(
-                                                                    color: Colors.grey[400],
-                                                                    borderRadius: BorderRadius.all(Radius.circular(10))
-                                                                  ),
-                                                                    padding:
-                                                                        EdgeInsets
-                                                                            .all(2),
-                                                                    //color: Colors.grey[400],
-                                                                    child: Icon(
-                                                                      Icons
-                                                                          .done,
-                                                                      size: 10,
-                                                                      color: Colors
-                                                                          .white,
-                                                                    ))
-                                                                : Text(
-                                                                    "Seen",
-                                                                    style: TextStyle(
-                                                                        fontSize:
-                                                                            10,
-                                                                        color: Colors
-                                                                            .grey),
-                                                                  ),
-                                                          )
-                                                        ],
-                                                      ),
+                                                          //color: Colors.white,
+                                                          child: Text(
+                                                            "${messages[index]}",
+                                                            style: TextStyle(
+                                                                fontSize: 14,
+                                                                color: Colors
+                                                                    .white),
+                                                          ),
+                                                        ),
+                                                        Container(
+                                                          margin:
+                                                              EdgeInsets.only(
+                                                                  top: 5),
+                                                          child: Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .end,
+                                                            children: <Widget>[
+                                                              selected == index
+                                                                  ? Text(
+                                                                      "4:17 PM",
+                                                                      style: TextStyle(
+                                                                          fontSize:
+                                                                              10,
+                                                                          color:
+                                                                              Colors.grey),
+                                                                    )
+                                                                  : Container(),
+                                                              selected == index
+                                                                  ? Container(
+                                                                      margin: EdgeInsets.only(
+                                                                          left:
+                                                                              3),
+                                                                      child: messages.length ==
+                                                                              index + 1
+                                                                          ? Container(
+                                                                              decoration: BoxDecoration(color: Colors.grey[400], borderRadius: BorderRadius.all(Radius.circular(10))),
+                                                                              padding: EdgeInsets.all(2),
+                                                                              //color: Colors.grey[400],
+                                                                              child: Icon(
+                                                                                Icons.done,
+                                                                                size: 8,
+                                                                                color: Colors.white,
+                                                                              ))
+                                                                          :
+                                                                          // Text(
+                                                                          //     "Seen",
+                                                                          //     style: TextStyle(
+                                                                          //         fontSize:
+                                                                          //             10,
+                                                                          //         color: Colors
+                                                                          //             .grey),
+                                                                          //   ),
+                                                                          Container(
+                                                                              margin: EdgeInsets.only(right: 0),
+                                                                              //transform: Matrix4.translationValues(0.0, 0.0, 0.0),
+                                                                              padding: EdgeInsets.all(1.0),
+                                                                              child: CircleAvatar(
+                                                                                radius: 5.0,
+                                                                                backgroundColor: Colors.transparent,
+                                                                                backgroundImage: AssetImage('assets/user.png'),
+                                                                              ),
+                                                                              decoration: new BoxDecoration(
+                                                                                color: Colors.grey, // border color
+                                                                                shape: BoxShape.circle,
+                                                                              ),
+                                                                            ),
+                                                                    )
+                                                                  : Container()
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ],
                                                     ),
-                                                  ],
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      )
+                                    : Container(
+                                      child: ListTile(
+                                        title: Container(
+                                          margin: EdgeInsets.only(
+                                              left: 0, right: 0, top: 0),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: <Widget>[
+                                              Container(
+                                                margin: EdgeInsets.only(
+                                                    right: 5),
+                                                //transform: Matrix4.translationValues(0.0, 0.0, 0.0),
+                                                padding:
+                                                    EdgeInsets.all(1.0),
+                                                child: CircleAvatar(
+                                                  radius: 12.0,
+                                                  backgroundColor:
+                                                      Colors.transparent,
+                                                  backgroundImage:
+                                                      AssetImage(
+                                                          'assets/user.png'),
+                                                ),
+                                                decoration:
+                                                    new BoxDecoration(
+                                                  color: Colors
+                                                      .grey, // border color
+                                                  shape: BoxShape.circle,
                                                 ),
                                               ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  )
-                                : Container(
-                                    child: ListTile(
-                                      title: Container(
-                                        margin: EdgeInsets.only(
-                                            left: 0, right: 0, top: 30),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: <Widget>[
-                                            Container(
-                                              margin: EdgeInsets.only(right: 5),
-                                              //transform: Matrix4.translationValues(0.0, 0.0, 0.0),
-                                              padding: EdgeInsets.all(1.0),
-                                              child: CircleAvatar(
-                                                radius: 12.0,
-                                                backgroundColor:
-                                                    Colors.transparent,
-                                                backgroundImage: AssetImage(
-                                                    'assets/user.png'),
-                                              ),
-                                              decoration: new BoxDecoration(
-                                                color:
-                                                    Colors.grey, // border color
-                                                shape: BoxShape.circle,
-                                              ),
-                                            ),
-                                            Expanded(
-                                              child: Container(
-                                                //margin: EdgeInsets.only(top: 5),
-                                                child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: <Widget>[
-                                                    Container(
-                                                      padding:
-                                                          EdgeInsets.all(10),
-                                                      margin: EdgeInsets.only(
-                                                          top: 0, right: 70),
-                                                      decoration:
-                                                          new BoxDecoration(
-                                                        color: person_chat,
-                                                        borderRadius:
-                                                            BorderRadius.all(
-                                                                Radius.circular(
-                                                                    10)),
-                                                        border: Border.all(
-                                                            width: 0.2,
-                                                            color: person_chat),
+                                              Expanded(
+                                                child: Container(
+                                                  //margin: EdgeInsets.only(top: 5),
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: <Widget>[
+                                                      Container(
+                                                        padding:
+                                                            EdgeInsets.all(
+                                                                10),
+                                                        margin:
+                                                            EdgeInsets.only(
+                                                                top: 0,
+                                                                right: 70),
+                                                        decoration:
+                                                            new BoxDecoration(
+                                                          color:
+                                                              person_chat,
+                                                          borderRadius: BorderRadius
+                                                              .all(Radius
+                                                                  .circular(
+                                                                      10)),
+                                                          border: Border.all(
+                                                              width: 0.1,
+                                                              color:
+                                                                  Colors.grey),
+                                                        ),
+                                                        //color: Colors.white,
+                                                        child: Text(
+                                                          "${messages[index]}",
+                                                          style: TextStyle(
+                                                              fontSize: 14,
+                                                              color: Colors
+                                                                  .black),
+                                                        ),
                                                       ),
-                                                      //color: Colors.white,
-                                                      child: Text(
-                                                        "${messages[index]}",
-                                                        style: TextStyle(
-                                                            fontSize: 14,
-                                                            color:
-                                                                Colors.black),
+                                                      Container(
+                                                        margin:
+                                                            EdgeInsets.only(
+                                                                top: 5),
+                                                        child: Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .spaceBetween,
+                                                          children: <
+                                                              Widget>[
+                                                            selected == index
+                                                              ? Text(
+                                                                  "4:17 PM",
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          10,
+                                                                      color:
+                                                                          Colors.grey),
+                                                                )
+                                                              : Container(),
+                                                          ],
+                                                        ),
                                                       ),
-                                                    ),
-                                                    Container(
-                                                      margin: EdgeInsets.only(
-                                                          top: 5),
-                                                      child: Row(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceBetween,
-                                                        children: <Widget>[
-                                                          Text(
-                                                            "24/07/19",
-                                                            style: TextStyle(
-                                                                fontSize: 10,
-                                                                color: Colors
-                                                                    .grey),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ],
+                                                    ],
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  )),
+                                    ))),
                   ),
                 ),
                 // Container(
@@ -310,7 +350,7 @@ class _ChatPageState extends State<ChatPage> {
                                   bottomRight: Radius.circular(20.0)),
                               color: Colors.grey[100],
                               border: Border.all(
-                                  width: 0.2, color: Colors.grey[400])),
+                                  width: 0.5, color: Colors.grey[400])),
                           child: Row(
                             children: <Widget>[
                               Flexible(
@@ -364,18 +404,18 @@ class _ChatPageState extends State<ChatPage> {
                           } else {}
                         },
                         child: Container(
-                            padding: EdgeInsets.all(10),
-                            decoration: BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(100.0)),
-                                color: header,
-                                border:
-                                    Border.all(width: 0.5, color: Colors.grey)),
+                            padding: EdgeInsets.all(5),
+                            // decoration: BoxDecoration(
+                            //     borderRadius:
+                            //         BorderRadius.all(Radius.circular(100.0)),
+                            //     color: header,
+                            //     border:
+                            //         Border.all(width: 0.5, color: header)),
                             margin: EdgeInsets.only(right: 15),
                             child: Icon(
                               Icons.send,
-                              color: Colors.white,
-                              size: 18,
+                              color: header,
+                              size: 25,
                             )),
                       )
                     ],

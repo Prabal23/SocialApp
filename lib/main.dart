@@ -11,7 +11,10 @@ Color sub_white = Color(0xFFf4f4f4);
 Color golden = Color(0xFFCFB53B);
 Color chat_back = Color(0xFFEAE7E2);
 Color my_chat = Color(0xFF01AFF4);
-Color person_chat = Color(0xFFF1F0F0);
+Color person_chat = Color(0xFFE9EBED);
+Color chat_page_back = Color(0xFFFFFFFF);
+// Color my_chats = Color(0xFF01AFF4);
+// Color person_chats = Color(0xFFFFFFFF);
 String job_page = "1";
 
 class MyApp extends StatelessWidget {

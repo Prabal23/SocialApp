@@ -62,7 +62,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             child: CircleAvatar(
                               radius: 80.0,
                               backgroundColor: Colors.transparent,
-                              backgroundImage: AssetImage('assets/user.png'),
+                              backgroundImage: AssetImage('assets/user_1.jpg'),
                             ),
                             decoration: new BoxDecoration(
                               color: Colors.grey, // border color
@@ -641,7 +641,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     radius: 22.0,
                                     backgroundColor: Colors.transparent,
                                     backgroundImage:
-                                        AssetImage('assets/user.png'),
+                                        AssetImage('assets/user_1.jpg'),
                                   ),
                                   decoration: new BoxDecoration(
                                     color: Colors.grey, // border color
@@ -763,7 +763,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                         radius: 15.0,
                                         backgroundColor: Colors.transparent,
                                         backgroundImage:
-                                            AssetImage('assets/user.png'),
+                                            AssetImage('assets/user_1.jpg'),
                                       ),
                                       decoration: new BoxDecoration(
                                         color: Colors.grey, // border color

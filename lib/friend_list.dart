@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 import 'package:social_app/profile.dart';
+import './main.dart';
+import 'chat_page.dart';
+import 'homepage.dart';
 
-import 'main.dart';
-
-class FriendsPage extends StatefulWidget {
+class FriendListPage extends StatefulWidget {
   @override
-  _FriendsPageState createState() => _FriendsPageState();
+  _FriendListPageState createState() => new _FriendListPageState();
 }
 
-class _FriendsPageState extends State<FriendsPage> {
+class _FriendListPageState extends State<FriendListPage> {
+
   int length, no;
   @override
   void initState() {
@@ -23,6 +27,23 @@ class _FriendsPageState extends State<FriendsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: sub_white,
+        appBar: AppBar(
+          //automaticallyImplyLeading: false,
+          backgroundColor: header,
+          title: Center(
+            child: Container(
+              child: Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text("Friend List",
+                        style: TextStyle(fontSize: 18, color: Colors.white)),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
         body: new DefaultTabController(
             length: length,
             child: new Scaffold(

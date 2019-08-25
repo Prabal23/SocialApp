@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:social_app/chatlist.dart';
+import 'package:social_app/friend_list.dart';
 import 'package:social_app/friends.dart';
 import 'package:social_app/frontpage.dart';
+import 'package:social_app/memories.dart';
 import 'package:social_app/notification.dart';
 import 'package:social_app/post_status_pic.dart';
 import 'package:social_app/profile.dart';
@@ -22,7 +24,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final pageOptions = [
     FrontPage(),
     FriendsPage(),
-    PostPage(),
+    //PostPage(),
     NotificationPage(),
     JobsPage(),
   ];
@@ -59,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         child: CircleAvatar(
                           radius: 50.0,
                           backgroundColor: Colors.transparent,
-                          backgroundImage: AssetImage('assets/user.png'),
+                          backgroundImage: AssetImage('assets/user_1.jpg'),
                         ),
                         decoration: new BoxDecoration(
                           color: Colors.grey, // border color
@@ -108,54 +110,62 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Divider(
                     color: Colors.grey[300],
                   )),
-              Container(
-                margin: EdgeInsets.only(left: 15, right: 15, top: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        Icon(
-                          Icons.group,
-                          color: Colors.black45,
-                          size: 23,
-                        ),
-                        Container(
-                            margin: EdgeInsets.only(left: 10),
-                            child:
-                                Text("Friends", style: TextStyle(fontSize: 14)))
-                      ],
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Container(
-                          margin: EdgeInsets.only(
-                            left: 0,
-                            right: 5,
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => FriendListPage()),
+                  );
+                },
+                child: Container(
+                  margin: EdgeInsets.only(left: 15, right: 15, top: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          Icon(
+                            Icons.group,
+                            color: Colors.black45,
+                            size: 23,
                           ),
-                          //transform: Matrix4.translationValues(0.0, 0.0, 0.0),
-                          padding: EdgeInsets.all(1.0),
-                          child: CircleAvatar(
-                            radius: 2.0,
-                            backgroundColor: header,
-                            //backgroundImage: AssetImage('assets/user.png'),
+                          Container(
+                              margin: EdgeInsets.only(left: 10),
+                              child: Text("Friends",
+                                  style: TextStyle(fontSize: 14)))
+                        ],
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Container(
+                            margin: EdgeInsets.only(
+                              left: 0,
+                              right: 5,
+                            ),
+                            //transform: Matrix4.translationValues(0.0, 0.0, 0.0),
+                            padding: EdgeInsets.all(1.0),
+                            child: CircleAvatar(
+                              radius: 2.0,
+                              backgroundColor: header,
+                              //backgroundImage: AssetImage('assets/user.png'),
+                            ),
+                            decoration: new BoxDecoration(
+                              color: header, // border color
+                              shape: BoxShape.circle,
+                            ),
                           ),
-                          decoration: new BoxDecoration(
-                            color: header, // border color
-                            shape: BoxShape.circle,
+                          Container(
+                            margin: EdgeInsets.only(right: 5),
+                            child: Text("23 requests",
+                                style: TextStyle(
+                                    fontSize: 12,
+                                    color: header,
+                                    fontWeight: FontWeight.bold)),
                           ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(right: 5),
-                          child: Text("23 requests",
-                              style: TextStyle(
-                                  fontSize: 12,
-                                  color: header,
-                                  fontWeight: FontWeight.bold)),
-                        ),
-                      ],
-                    )
-                  ],
+                        ],
+                      )
+                    ],
+                  ),
                 ),
               ),
               GestureDetector(
@@ -237,50 +247,58 @@ class _MyHomePageState extends State<MyHomePage> {
                   ],
                 ),
               ),
-              Container(
-                margin: EdgeInsets.only(left: 15, right: 15, top: 25),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        Icon(
-                          Icons.access_time,
-                          color: Colors.black45,
-                          size: 23,
-                        ),
-                        Container(
-                            margin: EdgeInsets.only(left: 10),
-                            child: Text("Memories",
-                                style: TextStyle(fontSize: 14)))
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.only(left: 15, right: 15, top: 25),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        Icon(
-                          Icons.bookmark,
-                          color: Colors.black45,
-                          size: 23,
-                        ),
-                        Container(
-                            margin: EdgeInsets.only(left: 10),
-                            child:
-                                Text("Saved", style: TextStyle(fontSize: 14)))
-                      ],
-                    ),
-                  ],
-                ),
-              ),
               GestureDetector(
-                onTap: (){
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MemoryPage()),
+                  );
+                },
+                child: Container(
+                  margin: EdgeInsets.only(left: 15, right: 15, top: 25),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          Icon(
+                            Icons.access_time,
+                            color: Colors.black45,
+                            size: 23,
+                          ),
+                          Container(
+                              margin: EdgeInsets.only(left: 10),
+                              child: Text("Memories",
+                                  style: TextStyle(fontSize: 14)))
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              // Container(
+              //   margin: EdgeInsets.only(left: 15, right: 15, top: 25),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //     children: <Widget>[
+              //       Row(
+              //         children: <Widget>[
+              //           Icon(
+              //             Icons.bookmark,
+              //             color: Colors.black45,
+              //             size: 23,
+              //           ),
+              //           Container(
+              //               margin: EdgeInsets.only(left: 10),
+              //               child:
+              //                   Text("Saved", style: TextStyle(fontSize: 14)))
+              //         ],
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              GestureDetector(
+                onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => JobsDrawPage()),
@@ -300,8 +318,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           Container(
                               margin: EdgeInsets.only(left: 10),
-                              child:
-                                  Text("My Jobs", style: TextStyle(fontSize: 14)))
+                              child: Text("My Jobs",
+                                  style: TextStyle(fontSize: 14)))
                         ],
                       ),
                       Row(
@@ -437,43 +455,12 @@ class _MyHomePageState extends State<MyHomePage> {
             _scaffoldKey.currentState.openDrawer();
           },
           child: Container(
-            margin: EdgeInsets.only(left: 15),
-            //color: Colors.red,
-            child: Center(
-              child: Stack(
-                children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.only(right: 0),
-                    //transform: Matrix4.translationValues(0.0, 0.0, 0.0),
-                    padding: EdgeInsets.all(1.0),
-                    child: CircleAvatar(
-                      radius: 15.0,
-                      backgroundColor: Colors.transparent,
-                      backgroundImage: AssetImage('assets/user.png'),
-                    ),
-                    decoration: new BoxDecoration(
-                      color: Colors.grey, // border color
-                      shape: BoxShape.circle,
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(left: 23),
-                    //transform: Matrix4.translationValues(0.0, 0.0, 0.0),
-                    padding: EdgeInsets.all(1.0),
-                    child: CircleAvatar(
-                      radius: 5.0,
-                      backgroundColor: Colors.greenAccent,
-                      //backgroundImage: AssetImage('assets/user.png'),
-                    ),
-                    decoration: new BoxDecoration(
-                      color: Colors.grey, // border color
-                      shape: BoxShape.circle,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
+              margin: EdgeInsets.only(left: 10),
+              //color: Colors.red,
+              child: Icon(
+                Icons.menu,
+                size: 27,
+              )),
         ),
         title: Container(
           margin: EdgeInsets.only(top: 0),
@@ -494,7 +481,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       hintText: "Search...",
                       hintStyle: TextStyle(color: Colors.black45),
                       //labelStyle: TextStyle(color: Colors.white70),
-                      contentPadding: EdgeInsets.fromLTRB(10.0, 5.0, 20.0, 5.0),
+                      contentPadding:
+                          EdgeInsets.fromLTRB(10.0, 5.0, 20.0, 5.0),
                       border: InputBorder.none,
                     ),
                   ),
@@ -530,8 +518,8 @@ class _MyHomePageState extends State<MyHomePage> {
               icon: Icon(Icons.home), title: SizedBox.shrink()),
           BottomNavigationBarItem(
               icon: Icon(Icons.group), title: SizedBox.shrink()),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.add_circle_outline), title: SizedBox.shrink()),
+          // BottomNavigationBarItem(
+          //     icon: Icon(Icons.add_circle_outline), title: SizedBox.shrink()),
           BottomNavigationBarItem(
               icon: Icon(Icons.notifications), title: SizedBox.shrink()),
           BottomNavigationBarItem(
