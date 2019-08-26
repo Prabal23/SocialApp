@@ -29,7 +29,7 @@ class _GroupPageState extends State<GroupPage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Text("Group",
+                    Text("Groups",
                         style: TextStyle(fontSize: 18, color: Colors.white)),
                   ],
                 ),

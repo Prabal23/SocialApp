@@ -26,6 +26,7 @@ dependencies:
   flutter_statusbarcolor:
   video_player:
   toast:
+  intl:
 
 dev_dependencies:
   flutter_test:
@@ -55,6 +56,8 @@ flutter:
     - assets/camera.jpg
     - assets/cam.png
     - assets/user_1.jpg
+    - assets/events.png
+    - assets/white.png
     #- images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

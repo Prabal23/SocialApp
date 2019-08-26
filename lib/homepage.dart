@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:social_app/chatlist.dart';
+import 'package:social_app/events.dart';
 import 'package:social_app/friend_list.dart';
 import 'package:social_app/friends.dart';
 import 'package:social_app/frontpage.dart';
@@ -226,25 +227,33 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
               ),
-              Container(
-                margin: EdgeInsets.only(left: 15, right: 15, top: 25),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Row(
-                      children: <Widget>[
-                        Icon(
-                          Icons.event_available,
-                          color: Colors.black45,
-                          size: 23,
-                        ),
-                        Container(
-                            margin: EdgeInsets.only(left: 10),
-                            child:
-                                Text("Events", style: TextStyle(fontSize: 14)))
-                      ],
-                    ),
-                  ],
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => EventPage()),
+                  );
+                },
+                child: Container(
+                  margin: EdgeInsets.only(left: 15, right: 15, top: 25),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          Icon(
+                            Icons.event_available,
+                            color: Colors.black45,
+                            size: 23,
+                          ),
+                          Container(
+                              margin: EdgeInsets.only(left: 10),
+                              child:
+                                  Text("Events", style: TextStyle(fontSize: 14)))
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
               GestureDetector(
