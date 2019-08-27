@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:social_app/profile.dart';
 import 'package:toast/toast.dart';
 import './main.dart';
 import 'chat_page.dart';
 import 'homepage.dart';
 import 'package:intl/intl.dart';
+import 'dart:io';
 
 class EventAddPage extends StatefulWidget {
   @override
@@ -25,7 +27,7 @@ class _EventAddPageState extends State<EventAddPage> {
   String date = "Today";
   String date1 = "Date";
   String dateStr = "Today";
-  String dateStr1 = "Today";
+  String dateStr1 = "Date";
   String time = "";
   String time1 = "Time";
   var dd, finalDate, strDate;
@@ -36,6 +38,14 @@ class _EventAddPageState extends State<EventAddPage> {
   TimeOfDay _time = TimeOfDay.now();
   TimeOfDay _time1 = TimeOfDay.now();
 
+  Future<File> fileImage;
+
+  pickImagefromGallery(ImageSource src) {
+    setState(() {
+      fileImage = ImagePicker.pickImage(source: src);
+    });
+  }
+
   @override
   void initState() {
     print(user.length);
@@ -43,7 +53,7 @@ class _EventAddPageState extends State<EventAddPage> {
       date = DateFormat("dd-MM-yyyy").format(now);
       //date1 = DateFormat("dd-MM-yyyy").format(now);
       dateStr = DateFormat("MMM dd, yyyy").format(now);
-      dateStr1 = DateFormat("MMM dd, yyyy").format(now);
+      //dateStr1 = DateFormat("MMM dd, yyyy").format(now);
       time = DateFormat("hh:mm a").format(now);
       //time1 = DateFormat("hh:mm a").format(now);
     });
@@ -68,14 +78,68 @@ class _EventAddPageState extends State<EventAddPage> {
       setState(() {
         _date = picked;
         var dd2 = DateTime.parse(_date.toString());
-        var finalDate2 = "${dd2.day}-${dd2.month}-${dd2.year}";
-        var strDate2 = "${dd.day}-${dd.month}-${dd.year}";
+        String day = "${dd2.day}";
+        int dday = int.parse(day);
+        if (dday < 10) {
+          day = "0" + day;
+        }
+
+        String month = "${dd2.month}";
+        String months = "${dd2.month}";
+        int mmonth = int.parse(month);
+        // if (mmonth < 10) {
+        //   month = "0" + month;
+        // }
+        if (mmonth == 1) {
+          months = "Jan";
+        }
+        if (mmonth == 2) {
+          months = "Feb";
+        }
+        if (mmonth == 3) {
+          months = "Mar";
+        }
+        if (mmonth == 4) {
+          months = "Apr";
+        }
+        if (mmonth == 5) {
+          months = "May";
+        }
+        if (mmonth == 6) {
+          months = "Jun";
+        }
+        if (mmonth == 7) {
+          months = "Jul";
+        }
+        if (mmonth == 8) {
+          months = "Aug";
+        }
+        if (mmonth == 9) {
+          months = "Sep";
+        }
+        if (mmonth == 10) {
+          months = "Oct";
+        }
+        if (mmonth == 11) {
+          months = "Nov";
+        }
+        if (mmonth == 12) {
+          months = "Dec";
+        }
+
+        String year = "${dd2.year}";
+        int yyear = int.parse(year);
+        if (yyear < 10) {
+          year = "0" + year;
+        }
+        var finalDate2 = "$day-$month-$year";
+        var strDate2 = "$months $day, $year";
         date = finalDate2.toString();
         dateStr = strDate2.toString();
       });
     }
     print("dateStr");
-    print(dateStr);
+    print(date);
   }
 
   Future<Null> _selectDate1(BuildContext context) async {
@@ -92,11 +156,69 @@ class _EventAddPageState extends State<EventAddPage> {
       setState(() {
         _date1 = picked;
         var dd3 = DateTime.parse(_date1.toString());
-        var finalDate3 = "${dd3.day}-${dd3.month}-${dd3.year}";
+        String day = "${dd3.day}";
+        int dday = int.parse(day);
+        if (dday < 10) {
+          day = "0" + day;
+        }
+
+        String month = "${dd3.month}";
+        String months = "${dd3.month}";
+        int mmonth = int.parse(month);
+        // if (mmonth < 10) {
+        //   month = "0" + month;
+        // }
+        if (mmonth == 1) {
+          months = "Jan";
+        }
+        if (mmonth == 2) {
+          months = "Feb";
+        }
+        if (mmonth == 3) {
+          months = "Mar";
+        }
+        if (mmonth == 4) {
+          months = "Apr";
+        }
+        if (mmonth == 5) {
+          months = "May";
+        }
+        if (mmonth == 6) {
+          months = "Jun";
+        }
+        if (mmonth == 7) {
+          months = "Jul";
+        }
+        if (mmonth == 8) {
+          months = "Aug";
+        }
+        if (mmonth == 9) {
+          months = "Sep";
+        }
+        if (mmonth == 10) {
+          months = "Oct";
+        }
+        if (mmonth == 11) {
+          months = "Nov";
+        }
+        if (mmonth == 12) {
+          months = "Dec";
+        }
+
+        String year = "${dd3.year}";
+        int yyear = int.parse(year);
+        if (yyear < 10) {
+          year = "0" + year;
+        }
+
+        var finalDate3 = "$day-$month-$year";
+        var strDate3 = "$months $day, $year";
         date1 = finalDate3.toString();
+        dateStr1 = strDate3.toString();
       });
     }
-    //print(date1);
+    print("dateStr1");
+    print(date1);
   }
 
   Future<Null> _selectTime(BuildContext context) async {
@@ -107,12 +229,15 @@ class _EventAddPageState extends State<EventAddPage> {
         _time = picked;
         String ap = "${_time.hour}";
         int ampm = int.parse(ap);
-        String am_pm = "PM";
+        String amPm = "PM";
 
         String hh = "${_time.hourOfPeriod}";
         int h = int.parse(hh);
         if (h < 10) {
           hh = "0" + hh;
+        }
+        if (h == 00) {
+          hh = "12";
         }
 
         String mm = "${_time.minute}";
@@ -122,11 +247,11 @@ class _EventAddPageState extends State<EventAddPage> {
         }
 
         if (ampm < 12) {
-          am_pm = "AM";
-        }else{
-          am_pm = "PM";
+          amPm = "AM";
+        } else {
+          amPm = "PM";
         }
-        var tt = "$hh:$mm $am_pm";
+        var tt = "$hh:$mm $amPm";
         time = tt.toString();
       });
     }
@@ -141,12 +266,15 @@ class _EventAddPageState extends State<EventAddPage> {
         _time1 = picked;
         String ap = "${_time1.hour}";
         int ampm = int.parse(ap);
-        String am_pm = "PM";
+        String amPm = "PM";
 
         String hh = "${_time1.hourOfPeriod}";
         int h = int.parse(hh);
         if (h < 10) {
           hh = "0" + hh;
+        }
+        if (h == 00) {
+          hh = "12";
         }
 
         String mm = "${_time1.minute}";
@@ -156,11 +284,11 @@ class _EventAddPageState extends State<EventAddPage> {
         }
 
         if (ampm < 12) {
-          am_pm = "AM";
-        }else{
-          am_pm = "PM";
+          amPm = "AM";
+        } else {
+          amPm = "PM";
         }
-        var tt = "$hh:$mm $am_pm";
+        var tt = "$hh:$mm $amPm";
         time1 = tt.toString();
       });
     }
@@ -193,61 +321,174 @@ class _EventAddPageState extends State<EventAddPage> {
             SliverToBoxAdapter(
               child: Column(
                 children: <Widget>[
-                  Stack(
-                    children: <Widget>[
-                      Container(
-                        //color: header,
-                        padding: const EdgeInsets.all(0.0),
-                        margin: EdgeInsets.only(top: 15, left: 15, right: 15),
-                        child: Image.asset(
-                          'assets/white.png',
-                          height: 170,
-                          width: MediaQuery.of(context).size.width,
-                        ),
-                      ),
-                      Container(
-                        color: Colors.black.withOpacity(0.7),
-                        width: MediaQuery.of(context).size.width,
-                        height: 170,
-                        padding: const EdgeInsets.all(0.0),
-                        margin: EdgeInsets.only(top: 15, left: 15, right: 15),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Container(
-                            padding: EdgeInsets.all(8),
-                            width: 180,
-                            margin: EdgeInsets.only(top: 85),
-                            alignment: Alignment.center,
-                            decoration: BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(5.0)),
-                                color: Colors.transparent,
-                                border: Border.all(
-                                    width: 0.5, color: Colors.white70)),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
+                  FutureBuilder<File>(
+                    future: fileImage,
+                    builder:
+                        (BuildContext context, AsyncSnapshot<File> snapshot) {
+                      if (snapshot.connectionState == ConnectionState.done &&
+                          snapshot.data != null) {
+                        return GestureDetector(
+                          onTap: () {
+                            pickImagefromGallery(ImageSource.gallery);
+                          },
+                          child: Container(
+                            child: Stack(
                               children: <Widget>[
-                                Icon(
-                                  Icons.photo_library,
-                                  size: 16,
-                                  color: Colors.white70,
-                                ),
                                 Container(
-                                  margin: EdgeInsets.only(left: 5),
-                                  child: Text(
-                                    "Add Event Photo",
-                                    style: TextStyle(
-                                        color: Colors.white70, fontSize: 14),
+                                  //color: header,
+                                  padding: const EdgeInsets.all(0.0),
+                                  margin: EdgeInsets.only(
+                                      top: 15, left: 15, right: 15),
+                                  child: Image.file(
+                                    snapshot.data,
+                                    height: 170,
+                                    width: MediaQuery.of(context).size.width,
                                   ),
                                 ),
                               ],
                             ),
                           ),
-                        ],
-                      ),
-                    ],
+                        );
+                      } else if (snapshot.error != null) {
+                        return GestureDetector(
+                          onTap: () {
+                            pickImagefromGallery(ImageSource.gallery);
+                          },
+                          child: Container(
+                            child: Stack(
+                              children: <Widget>[
+                                Container(
+                                  //color: header,
+                                  padding: const EdgeInsets.all(0.0),
+                                  margin: EdgeInsets.only(
+                                      top: 15, left: 15, right: 15),
+                                  child: Image.asset(
+                                    'assets/white.png',
+                                    height: 170,
+                                    width: MediaQuery.of(context).size.width,
+                                  ),
+                                ),
+                                Container(
+                                  color: Colors.black.withOpacity(0.7),
+                                  width: MediaQuery.of(context).size.width,
+                                  height: 170,
+                                  padding: const EdgeInsets.all(0.0),
+                                  margin: EdgeInsets.only(
+                                      top: 15, left: 15, right: 15),
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Container(
+                                      padding: EdgeInsets.all(8),
+                                      width: 180,
+                                      margin: EdgeInsets.only(top: 85),
+                                      alignment: Alignment.center,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(5.0)),
+                                          color: Colors.transparent,
+                                          border: Border.all(
+                                              width: 0.5,
+                                              color: Colors.white70)),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: <Widget>[
+                                          // Icon(
+                                          //   Icons.photo_library,
+                                          //   size: 16,
+                                          //   color: Colors.white70,
+                                          // ),
+                                          Container(
+                                            margin: EdgeInsets.only(left: 5),
+                                            child: Text(
+                                              "Error picking image!",
+                                              style: TextStyle(
+                                                  color: Colors.white70,
+                                                  fontSize: 14),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      } else {
+                        return GestureDetector(
+                          onTap: () {
+                            pickImagefromGallery(ImageSource.gallery);
+                          },
+                          child: Container(
+                            child: Stack(
+                              children: <Widget>[
+                                Container(
+                                  //color: header,
+                                  padding: const EdgeInsets.all(0.0),
+                                  margin: EdgeInsets.only(
+                                      top: 15, left: 15, right: 15),
+                                  child: Image.asset(
+                                    'assets/white.png',
+                                    height: 170,
+                                    width: MediaQuery.of(context).size.width,
+                                  ),
+                                ),
+                                Container(
+                                  color: Colors.black.withOpacity(0.7),
+                                  width: MediaQuery.of(context).size.width,
+                                  height: 170,
+                                  padding: const EdgeInsets.all(0.0),
+                                  margin: EdgeInsets.only(
+                                      top: 15, left: 15, right: 15),
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Container(
+                                      padding: EdgeInsets.all(8),
+                                      width: 180,
+                                      margin: EdgeInsets.only(top: 85),
+                                      alignment: Alignment.center,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(5.0)),
+                                          color: Colors.transparent,
+                                          border: Border.all(
+                                              width: 0.5,
+                                              color: Colors.white70)),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: <Widget>[
+                                          Icon(
+                                            Icons.photo_library,
+                                            size: 16,
+                                            color: Colors.white70,
+                                          ),
+                                          Container(
+                                            margin: EdgeInsets.only(left: 5),
+                                            child: Text(
+                                              "Add Event Photo",
+                                              style: TextStyle(
+                                                  color: Colors.white70,
+                                                  fontSize: 14),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      }
+                    },
                   ),
 
                   Container(
@@ -472,7 +713,7 @@ class _EventAddPageState extends State<EventAddPage> {
                                       color: Colors.white,
                                       border:
                                           Border.all(color: Colors.white70)),
-                                  child: Text("Start : $date",
+                                  child: Text("Start : $dateStr",
                                       style: TextStyle(
                                           fontSize: 16, color: Colors.black54)),
                                 ),
@@ -540,10 +781,10 @@ class _EventAddPageState extends State<EventAddPage> {
                                       color: Colors.white,
                                       border:
                                           Border.all(color: Colors.white70)),
-                                  child: Text("End   : $date1",
+                                  child: Text("End   : $dateStr1",
                                       style: TextStyle(
                                           fontSize: 16,
-                                          color: date1 == "Date"
+                                          color: dateStr1 == "Date"
                                               ? Colors.black26
                                               : Colors.black54)),
                                 ),

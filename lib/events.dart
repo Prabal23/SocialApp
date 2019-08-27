@@ -191,7 +191,7 @@ class _EventPageState extends State<EventPage> {
                                                                     fontSize:
                                                                         12,
                                                                     color: Colors
-                                                                        .black54,
+                                                                        .black38,
                                                                     fontWeight:
                                                                         FontWeight
                                                                             .normal),

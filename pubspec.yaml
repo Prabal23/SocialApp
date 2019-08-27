@@ -27,6 +27,7 @@ dependencies:
   video_player:
   toast:
   intl:
+  image_picker: ^0.4.10
 
 dev_dependencies:
   flutter_test:
