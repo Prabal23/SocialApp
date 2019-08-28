@@ -10,6 +10,7 @@ import 'package:social_app/notification.dart';
 import 'package:social_app/post_status_pic.dart';
 import 'package:social_app/profile.dart';
 import 'package:social_app/jobs.dart';
+import 'package:social_app/saved.dart';
 import 'group.dart';
 import 'jobs_drawer.dart';
 import 'main.dart';
@@ -248,8 +249,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           Container(
                               margin: EdgeInsets.only(left: 10),
-                              child:
-                                  Text("Events", style: TextStyle(fontSize: 14)))
+                              child: Text("Events",
+                                  style: TextStyle(fontSize: 14)))
                         ],
                       ),
                     ],
@@ -285,27 +286,35 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
               ),
-              // Container(
-              //   margin: EdgeInsets.only(left: 15, right: 15, top: 25),
-              //   child: Row(
-              //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //     children: <Widget>[
-              //       Row(
-              //         children: <Widget>[
-              //           Icon(
-              //             Icons.bookmark,
-              //             color: Colors.black45,
-              //             size: 23,
-              //           ),
-              //           Container(
-              //               margin: EdgeInsets.only(left: 10),
-              //               child:
-              //                   Text("Saved", style: TextStyle(fontSize: 14)))
-              //         ],
-              //       ),
-              //     ],
-              //   ),
-              // ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SavedPage()),
+                  );
+                },
+                child: Container(
+                  margin: EdgeInsets.only(left: 15, right: 15, top: 25),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Row(
+                        children: <Widget>[
+                          Icon(
+                            Icons.bookmark,
+                            color: Colors.black45,
+                            size: 23,
+                          ),
+                          Container(
+                              margin: EdgeInsets.only(left: 10),
+                              child:
+                                  Text("Saved", style: TextStyle(fontSize: 14)))
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
               GestureDetector(
                 onTap: () {
                   Navigator.push(
@@ -490,8 +499,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       hintText: "Search...",
                       hintStyle: TextStyle(color: Colors.black45),
                       //labelStyle: TextStyle(color: Colors.white70),
-                      contentPadding:
-                          EdgeInsets.fromLTRB(10.0, 5.0, 20.0, 5.0),
+                      contentPadding: EdgeInsets.fromLTRB(10.0, 5.0, 20.0, 5.0),
                       border: InputBorder.none,
                     ),
                   ),

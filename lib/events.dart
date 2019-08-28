@@ -440,7 +440,7 @@ class _EventPageState extends State<EventPage> {
                                                       children: <Widget>[
                                                         Container(
                                                           child: Text(
-                                                            "Flutter Developers Bangladesh",
+                                                            "Flutter Development Seminar",
                                                             overflow:
                                                                 TextOverflow
                                                                     .ellipsis,

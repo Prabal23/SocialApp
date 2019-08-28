@@ -138,8 +138,8 @@ class _EventAddPageState extends State<EventAddPage> {
         dateStr = strDate2.toString();
       });
     }
-    print("dateStr");
-    print(date);
+    // print("dateStr");
+    // print(date);
   }
 
   Future<Null> _selectDate1(BuildContext context) async {
@@ -217,8 +217,8 @@ class _EventAddPageState extends State<EventAddPage> {
         dateStr1 = strDate3.toString();
       });
     }
-    print("dateStr1");
-    print(date1);
+    // print("dateStr1");
+    // print(date1);
   }
 
   Future<Null> _selectTime(BuildContext context) async {

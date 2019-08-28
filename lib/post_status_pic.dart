@@ -10,6 +10,62 @@ class PostPage extends StatefulWidget {
 
 class _PostPageState extends State<PostPage> {
   String post = '';
+  String status = "1";
+
+  void _statusModalBottomSheet(context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext bc) {
+          return Container(
+            child: new Wrap(
+              children: <Widget>[
+                new ListTile(
+                  leading: new Icon(Icons.public),
+                  title: new Text('Public',
+                      style: TextStyle(fontWeight: FontWeight.normal)),
+                  trailing: status == "1"
+                      ? Icon(Icons.done, color: header)
+                      : Icon(Icons.done, color: Colors.transparent),
+                  onTap: () => {
+                    setState(() {
+                      status = "1";
+                    }),
+                    Navigator.pop(context)
+                  },
+                ),
+                new ListTile(
+                  leading: new Icon(Icons.lock_outline),
+                  title: new Text('Only Me',
+                      style: TextStyle(fontWeight: FontWeight.normal)),
+                  trailing: status == "2"
+                      ? Icon(Icons.done, color: header)
+                      : Icon(Icons.done, color: Colors.transparent),
+                  onTap: () => {
+                    setState(() {
+                      status = "2";
+                    }),
+                    Navigator.pop(context)
+                  },
+                ),
+                new ListTile(
+                  leading: new Icon(Icons.group),
+                  title: new Text('Friends',
+                      style: TextStyle(fontWeight: FontWeight.normal)),
+                  trailing: status == "3"
+                      ? Icon(Icons.done, color: header)
+                      : Icon(Icons.done, color: Colors.transparent),
+                  onTap: () => {
+                    setState(() {
+                      status = "3";
+                    }),
+                    Navigator.pop(context)
+                  },
+                ),
+              ],
+            ),
+          );
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -105,7 +161,8 @@ class _PostPageState extends State<PostPage> {
                                   child: Text(
                                     "Post",
                                     style: TextStyle(
-                                        color: post == '' ? Colors.grey : header,
+                                        color:
+                                            post == '' ? Colors.grey : header,
                                         fontWeight: FontWeight.bold),
                                   ),
                                 ),
@@ -152,40 +209,54 @@ class _PostPageState extends State<PostPage> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
                                 children: <Widget>[
-                                  Container(
-                                    margin: EdgeInsets.only(
-                                        top: 0, right: 5, left: 10),
-                                    decoration: BoxDecoration(
-                                        border: Border.all(
-                                            width: 0.3, color: Colors.black54),
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(10))),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: <Widget>[
-                                        Container(
-                                          margin: EdgeInsets.only(left: 5),
-                                          child: Icon(
-                                            Icons.settings,
-                                            size: 12,
+                                  GestureDetector(
+                                    onTap: () {
+                                      _statusModalBottomSheet(context);
+                                    },
+                                    child: Container(
+                                      margin: EdgeInsets.only(
+                                          top: 0, right: 5, left: 10),
+                                      decoration: BoxDecoration(
+                                          border: Border.all(
+                                              width: 0.3,
+                                              color: Colors.black54),
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10))),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: <Widget>[
+                                          Container(
+                                            margin: EdgeInsets.only(left: 5),
+                                            child: Icon(
+                                              status == "1"
+                                                  ? Icons.public
+                                                  : status == "2"
+                                                      ? Icons.lock_outline
+                                                      : Icons.group,
+                                              size: 12,
+                                              color: Colors.black54,
+                                            ),
+                                          ),
+                                          Container(
+                                              margin: EdgeInsets.only(left: 5),
+                                              child: Text(
+                                                status == "1"
+                                                    ? "Public"
+                                                    : status == "2"
+                                                        ? "Only Me"
+                                                        : "Friends",
+                                                style: TextStyle(
+                                                    color: Colors.black54,
+                                                    fontSize: 12),
+                                              )),
+                                          Icon(
+                                            Icons.arrow_drop_down,
+                                            size: 25,
                                             color: Colors.black54,
                                           ),
-                                        ),
-                                        Container(
-                                            margin: EdgeInsets.only(left: 5),
-                                            child: Text(
-                                              "Public",
-                                              style: TextStyle(
-                                                  color: Colors.black54,
-                                                  fontSize: 12),
-                                            )),
-                                        Icon(
-                                          Icons.arrow_drop_down,
-                                          size: 25,
-                                          color: Colors.black54,
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
                                   ),
                                   Container(

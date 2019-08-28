@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:social_app/chat_page.dart';
 import 'package:social_app/profile.dart';
 
 import 'main.dart';
@@ -1197,37 +1198,51 @@ class _FriendsPageState extends State<FriendsPage> {
                                                   ),
                                                 ),
                                               ),
-                                              Container(
-                                                margin: EdgeInsets.only(
-                                                    top: 0, left: 5, right: 15),
-                                                padding: EdgeInsets.all(7),
-                                                decoration: BoxDecoration(
-                                                    color: Colors.white,
-                                                    borderRadius:
-                                                        BorderRadius.all(
-                                                            Radius.circular(5)),
-                                                    border: Border.all(
-                                                        width: 0.2,
-                                                        color: Colors.black)),
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: <Widget>[
-                                                    Icon(Icons.message,
-                                                        color: Colors.black54,
-                                                        size: 14),
-                                                    Container(
-                                                      margin: EdgeInsets.only(
-                                                          left: 5),
-                                                      child: Text(
-                                                        "MESSAGE",
-                                                        style: TextStyle(
-                                                            color:
-                                                                Colors.black54,
-                                                            fontSize: 12),
+                                              GestureDetector(
+                                                onTap: () {
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            ChatPage()),
+                                                  );
+                                                },
+                                                child: Container(
+                                                  margin: EdgeInsets.only(
+                                                      top: 0,
+                                                      left: 5,
+                                                      right: 15),
+                                                  padding: EdgeInsets.all(7),
+                                                  decoration: BoxDecoration(
+                                                      color: Colors.white,
+                                                      borderRadius:
+                                                          BorderRadius.all(
+                                                              Radius.circular(
+                                                                  5)),
+                                                      border: Border.all(
+                                                          width: 0.2,
+                                                          color: Colors.black)),
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: <Widget>[
+                                                      Icon(Icons.message,
+                                                          color: Colors.black54,
+                                                          size: 14),
+                                                      Container(
+                                                        margin: EdgeInsets.only(
+                                                            left: 5),
+                                                        child: Text(
+                                                          "MESSAGE",
+                                                          style: TextStyle(
+                                                              color: Colors
+                                                                  .black54,
+                                                              fontSize: 12),
+                                                        ),
                                                       ),
-                                                    ),
-                                                  ],
+                                                    ],
+                                                  ),
                                                 ),
                                               )
                                             ],
