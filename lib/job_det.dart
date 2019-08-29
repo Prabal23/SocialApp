@@ -415,7 +415,8 @@ class _JobDetPageState extends State<JobDetPage> {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(left: 15, right: 15, top: 15, bottom: 15),
+                    margin: EdgeInsets.only(
+                        left: 15, right: 15, top: 15, bottom: 15),
                     child: Row(
                       children: <Widget>[
                         Container(

@@ -26,9 +26,9 @@ class MyApp extends StatelessWidget {
       title: 'Social App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        //platform: TargetPlatform.android
-        //primarySwatch: header
-      ),
+          //platform: TargetPlatform.android
+          //primarySwatch: header
+          ),
       home: SplashScreen(),
     );
   }
