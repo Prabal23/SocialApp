@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_statusbarcolor/flutter_statusbarcolor.dart';
-import 'package:social_app/homepage.dart';
-import 'package:social_app/splash.dart';
+
+import 'MainScreen/SplashPage/splash.dart';
 
 void main() => runApp(MyApp());
 
@@ -16,6 +16,16 @@ Color chat_page_back = Color(0xFFFFFFFF);
 // Color my_chats = Color(0xFF01AFF4);
 // Color person_chats = Color(0xFFFFFFFF);
 String job_page = "1";
+
+var friendname = List<String>();
+List<String> user = [];
+List<String> name = [
+  "John Smith",
+  "David Ryan",
+  "Simon Wright",
+  "Mike Johnson",
+  "Daniel Smith"
+];
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
