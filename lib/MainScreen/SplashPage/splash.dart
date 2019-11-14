@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/animation.dart';
 import 'package:social_app/MainScreen/HomePage/homepage.dart';
+import 'package:social_app/MainScreen/LoginPage/loginPage.dart';
 import 'dart:async';
 
 import '../../main.dart';
@@ -42,7 +43,7 @@ class SplashScreenState extends State<SplashScreen>
 
   onDoneLoading() async {
     Navigator.of(context)
-        .pushReplacement(MaterialPageRoute(builder: (context) => MyHomePage()));
+        .pushReplacement(MaterialPageRoute(builder: (context) => LoginPage()));
   }
 
   @override

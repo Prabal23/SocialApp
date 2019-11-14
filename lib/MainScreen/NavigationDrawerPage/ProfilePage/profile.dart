@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:social_app/MainScreen/CommentPage/commentPage.dart';
+import 'package:social_app/MainScreen/EditProfilePage/editProfilePage.dart';
 import 'package:social_app/MainScreen/NavigationDrawerPage/FriendListPage/friend_list.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:social_app/MainScreen/StatusAddEditPage/post_status_pic.dart';
@@ -635,19 +636,27 @@ class _ProfilePageState extends State<ProfilePage> {
                       ],
                     ),
                   ),
-                  Container(
-                      alignment: Alignment.center,
-                      width: MediaQuery.of(context).size.width,
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                          color: header.withOpacity(0.1),
-                          borderRadius: BorderRadius.all(Radius.circular(5))),
-                      margin: EdgeInsets.all(10),
-                      child: Text("Edit Profile",
-                          style: TextStyle(
-                              color: header,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16))),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => EditProfilePage()));
+                    },
+                    child: Container(
+                        alignment: Alignment.center,
+                        width: MediaQuery.of(context).size.width,
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                            color: header.withOpacity(0.1),
+                            borderRadius: BorderRadius.all(Radius.circular(5))),
+                        margin: EdgeInsets.all(10),
+                        child: Text("Edit Profile",
+                            style: TextStyle(
+                                color: header,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16))),
+                  ),
                   Container(
                     padding: EdgeInsets.only(top: 10, bottom: 10),
                     color: sub_white,

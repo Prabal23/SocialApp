@@ -28,6 +28,7 @@ dependencies:
   toast:
   intl:
   image_picker: ^0.4.10
+  flutter_datetime_picker:
 
 dev_dependencies:
   flutter_test:

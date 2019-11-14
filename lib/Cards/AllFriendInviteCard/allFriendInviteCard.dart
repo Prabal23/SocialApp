@@ -3,6 +3,7 @@ import 'dart:async';
 
 import '../../main.dart';
 
+
 class AllFriendInviteCard extends StatefulWidget {
   @override
   AllFriendInviteCardState createState() => AllFriendInviteCardState();

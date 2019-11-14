@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:social_app/MainScreen/AllMembersCard/allMembersCard.dart';
+import 'package:social_app/Cards/AllMembersCard/allMembersCard.dart';
 
 import '../../main.dart';
 

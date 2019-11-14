@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:social_app/MainScreen/ConversationPage/chat_page.dart';
 import 'package:social_app/MainScreen/NavigationDrawerPage/ProfilePage/profile.dart';
 
-import '../../main.dart';
 import 'dart:async';
+
+import '../../main.dart';
 
 class AllMembersCard extends StatefulWidget {
   @override
